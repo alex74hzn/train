@@ -52,18 +52,7 @@ public class TimeTable implements Comparable<String>{
                 });
             }
     }
-    public void printAsTable(List<Train> list){
-        System.out.println("+---------------------------------------------------+");
-        System.out.printf("|\t%4s\t|\t%12s\t|\t%12s\t|\n","№","До станции","Отправление");
-        System.out.println("+---------------------------------------------------+");
-        for(Train train:list){
-            System.out.printf("|\t%4s\t|\t%12s\t|\t%12s\t|\n",
-                    train.getTrainNumber()
-                    ,train.getDestination(),
-                    new SimpleDateFormat("HH:mm").format(train.parseTime(train.getDepartureTime())));
-            System.out.println("+---------------------------------------------------+");
-        }
-    }
+    
     public Train searchForTrain(int number){
         Train train;
         for (int i = 0; i < trains.size(); i++) {
