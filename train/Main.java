@@ -26,19 +26,19 @@ public class Main {
         printAsTable(timeatable.trains);
         numToSearch = getUserInt("Для сортировки по номеру введите '0', для поиска введите номер поезда: >");
         if(numToSearch == 0){
-            timeatable.sortByNumber();
-            printAsTable(timeatable.trains);
+            tt.sortByNumber();
+            printAsTable(tt.trains);
+
+        }
+        else {
             numToSearch = getUserInt("Для поиска введите номер поезда: >");
-            Train foundTrain = timeatable.searchForTrain(numToSearch);
-            if(timeatable.isInList == true) {
-                foundTrain.printString();
+            Train foundTrain = tt.searchForTrain(numToSearch);
+            if(tt.isInList == true) {
+                String trainFound = foundTrain.printString();
+                System.out.println(trainFound);
             }else{
                 System.out.println("Такого поезда нет в списке!");
             }
-        }
-        else {
-            Train foundTrain = timeatable.searchForTrain(numToSearch);
-            foundTrain.printString();
         }
         numToSearch = getUserInt("Для сортировки по городу введите '1': >");
         System.out.println(numToSearch);
