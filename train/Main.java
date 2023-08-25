@@ -8,42 +8,42 @@ public class Main {
     public static void main(String[] args) {
 
         int numToSearch;
-        TimeTable tt = new TimeTable();
+        TimeTable timeatable = new TimeTable();
         Train train1 = new Train("Витебск", 21, "12:34");
-        tt.add(train1);
+        timeatable.add(train1);
         Train train2 = new Train("Гомель", 101, "15:00");
-        tt.add(train2);
+        timeatable.add(train2);
         Train train3 = new Train("Гродно", 29, "16:04");
-        tt.add(train3);
+        timeatable.add(train3);
         Train train4 = new Train("Брест", 54, "12:20");
-        tt.add(train4);
+        timeatable.add(train4);
         Train train5 = new Train("Орша", 111, "21:34");
-        tt.add(train5);
+        timeatable.add(train5);
         Train train6 = new Train("Гродно", 66, "08:22");
-        tt.add(train6);
+        timeatable.add(train6);
 
 
-        tt.printAsTable(tt.trains);
+        printAsTable(timeatable.trains);
         numToSearch = getUserInt("Для сортировки по номеру введите '0', для поиска введите номер поезда: >");
         if(numToSearch == 0){
-            tt.sortByNumber();
-            tt.printAsTable(tt.trains);
+            timeatable.sortByNumber();
+            printAsTable(timeatable.trains);
             numToSearch = getUserInt("Для поиска введите номер поезда: >");
-            Train foundTrain = tt.searchForTrain(numToSearch);
-            if(tt.isInList == true) {
+            Train foundTrain = timeatable.searchForTrain(numToSearch);
+            if(timeatable.isInList == true) {
                 foundTrain.printString();
             }else{
                 System.out.println("Такого поезда нет в списке!");
             }
         }
         else {
-            Train foundTrain = tt.searchForTrain(numToSearch);
+            Train foundTrain = timeatable.searchForTrain(numToSearch);
             foundTrain.printString();
         }
         numToSearch = getUserInt("Для сортировки по городу введите '1': >");
         System.out.println(numToSearch);
-        tt.sortByDirection();
-        tt.printAsTable(tt.trains);
+        timeatable.sortByDirection();
+        printAsTable(tt.trains);
     }
 
     public static int getUserInt(String message) {
@@ -58,5 +58,17 @@ public class Main {
         input = sc.nextInt();
 
         return input;
+    }
+    public static void printAsTable(List<Train> list){
+        System.out.println("+---------------------------------------------------+");
+        System.out.printf("|\t%4s\t|\t%12s\t|\t%12s\t|\n","№","До станции","Отправление");
+        System.out.println("+---------------------------------------------------+");
+        for(Train train:list){
+            System.out.printf("|\t%4s\t|\t%12s\t|\t%12s\t|\n",
+                    train.getTrainNumber()
+                    ,train.getDestination(),
+                    new SimpleDateFormat("HH:mm").format(train.parseTime(train.getDepartureTime())));
+            System.out.println("+---------------------------------------------------+");
+        }
     }
 }
