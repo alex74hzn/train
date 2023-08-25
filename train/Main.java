@@ -26,14 +26,14 @@ public class Main {
         printAsTable(timeatable.trains);
         numToSearch = getUserInt("Для сортировки по номеру введите '0', для поиска введите номер поезда: >");
         if(numToSearch == 0){
-            tt.sortByNumber();
-            printAsTable(tt.trains);
+            timeatable.sortByNumber();
+            printAsTable(timeatable.trains);
 
         }
         else {
             numToSearch = getUserInt("Для поиска введите номер поезда: >");
-            Train foundTrain = tt.searchForTrain(numToSearch);
-            if(tt.isInList == true) {
+            Train foundTrain = timeatable.searchForTrain(numToSearch);
+            if(timeatable.isInList == true) {
                 String trainFound = foundTrain.printString();
                 System.out.println(trainFound);
             }else{
@@ -43,7 +43,7 @@ public class Main {
         numToSearch = getUserInt("Для сортировки по городу введите '1': >");
         System.out.println(numToSearch);
         timeatable.sortByDirection();
-        printAsTable(tt.trains);
+        printAsTable(timeatable.trains);
     }
 
     public static int getUserInt(String message) {
