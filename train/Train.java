@@ -49,9 +49,9 @@ public class Train {
         this.departureTime = departureTime;
     }
 
-    public void printString(){
+    public String printString(){
         String str = "#" + this.trainNumber + " | " + this.destination + " | " + this.departureTime;
-        System.out.println(str);
+        return str;
     }
     public Date parseTime(String timeString){
         SimpleDateFormat df = new SimpleDateFormat("HH:mm");
