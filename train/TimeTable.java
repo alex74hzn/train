@@ -76,11 +76,5 @@ public class TimeTable implements Comparable<String>{
         }
         return 0;
     }
-    public int compareTo(Date d) {
-        for(int i = 1; i < trains.size(); i++){
-            if(trains.get(i-1).getDestination().equals(trains.get(i).getDestination()))
-            return trains.get(i-1).parseTime(trains.get(i-1).getDepartureTime()).compareTo(d);
-        }
-        return 0;
-    }
+   
 }
